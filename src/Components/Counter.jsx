@@ -28,7 +28,7 @@ class Counter extends Component {
                 {this.getIconButton('plus circle', null)}
                 {this.getIconButton('minus circle', null)}
                 {new NamesContainer({names: this.state.tags, addName: this.addName.bind(this)}, "", maxContainerSize).render()}
-                <Label className={this.state.value === 0 ? "warning" : ""}>{this.state.value === 0 ? 'Zero' : this.state.value}</Label>
+                <Label className={this.state.value === 0 ? "warning" : "success"}>{this.state.value === 0 ? 'Zero' : this.state.value}</Label>
             </div>
         );
     }
