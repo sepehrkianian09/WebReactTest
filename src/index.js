@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import CountersContainer from "./Components/CountersContainer";
+import Counter from "./Components/Counter";
+// import {Label} from "semantic-ui-react";
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  /*<React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>*/
+    <Counter tags={['fuck', 'shit']} value={5}/>,
   document.getElementById('root')
 );
 
