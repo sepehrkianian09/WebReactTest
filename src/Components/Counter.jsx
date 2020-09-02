@@ -19,28 +19,46 @@ class Counter extends Component {
         addTag(tag) {
             (this.tags)[this.tags.length] = tag;
             return this;
+        },
+        incrementValue() {
+            this.value += 1;
+            return this;
+        },
+        decreaseValue() {
+            if (this.value !== 0) {
+                this.value -= 1;
+            }
+            return this;
         }
+    }
+
+    deleteName = () => {
+
     }
 
     render() {
         return (
             <div style={rowStyle}>
-                {this.getIconButton('plus circle', null)}
-                {this.getIconButton('minus circle', null)}
-                {new NamesContainer({names: this.state.tags, addName: this.addName.bind(this)}, "", maxContainerSize).render()}
-                <Label className={this.state.value === 0 ? "warning" : "success"}>{this.state.value === 0 ? 'Zero' : this.state.value}</Label>
+                {this.getIconButton('plus circle', () => this.setState(this.state.incrementValue()))}
+                {this.getIconButton('minus circle', () => this.setState(this.state.decreaseValue()))}
+                {new NamesContainer({
+                    names: this.state.tags,
+                    addName: this.addName.bind(this)
+                }, "", maxContainerSize).render()}
+                <Label>{this.state.value === 0 ? 'Zero' : this.state.value}</Label>
             </div>
         );
     }
+
 
     addName(name) {
         this.setState(this.state.addTag(name))
     }
 
     getIconButton(iconName, iconFunction) {
-        return(
+        return (
             <Button onClick={iconFunction} icon>
-                <Icon name={iconName} />
+                <Icon name={iconName}/>
             </Button>
         )
     }

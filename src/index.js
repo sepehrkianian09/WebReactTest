@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import CountersContainer from "./Components/CountersContainer";
 import Counter from "./Components/Counter";
-// import {Label} from "semantic-ui-react";
-
+import {Button, Label} from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css'
 
 
 ReactDOM.render(
-  /*<React.StrictMode>
-    <App />
-  </React.StrictMode>*/
-    <Counter tags={['fuck', 'shit']} value={5}/>,
-  document.getElementById('root')
+    /*<React.StrictMode>
+      <App />
+    </React.StrictMode>*/
+    <div>
+        <Button className="green">kiir</Button>
+        <Counter tags={['fuck', 'shit']} value={5}/>
+    </div>
+    ,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

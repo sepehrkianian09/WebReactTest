@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Icon, List} from "semantic-ui-react";
 import rowStyle from "../Styles/basicStyle";
-import PropTypes from 'prop-types';
 import getIconButton from "../Functions/BasicFunctions";
 
 class NamesContainer extends Component {
