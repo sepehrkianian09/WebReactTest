@@ -2,65 +2,33 @@ import React, {Component} from "react";
 import NamesContainer from "./NamesContainer";
 import {Button, Icon, Label} from "semantic-ui-react";
 import rowStyle from "../Styles/basicStyle";
+import CounterState from "./CounterState";
 
 const maxContainerSize = 5;
 
 class Counter extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state.tags = props.tags;
-        this.state.value = props.value;
-    }
-
-
-    state = {
-        tags: [],
-        value: 0,
-        addTag(tag) {
-            (this.tags)[this.tags.length] = tag;
-            return this;
-        },
-        incrementValue() {
-            this.value += 1;
-            return this;
-        },
-        decreaseValue() {
-            if (this.value !== 0) {
-                this.value -= 1;
-            }
-            return this;
-        }
-    }
-
-    deleteName = () => {
-
     }
 
     render() {
         return (
             <div style={rowStyle}>
-                {this.getIconButton('plus circle', () => this.setState(this.state.incrementValue()))}
-                {this.getIconButton('minus circle', () => this.setState(this.state.decreaseValue()))}
+                <Button onClick={() => this.setState(this.props.incrementValue())} icon>
+                    <Icon name='plus circle'/>
+                </Button>
+                <Button onClick={() => this.setState(this.props.decreaseValue())} disabled={this.props.value === 0}
+                        icon>
+                    <Icon name='minus circle'/>
+                </Button>
                 {new NamesContainer({
-                    names: this.state.tags,
-                    addName: this.addName.bind(this)
+                    names: this.props.tags,
+                    addName: (name) => this.setState(this.props.addTag(name)),
+                    deleteName: (index) => this.setState(this.props.delTag(index)),
                 }, "", maxContainerSize).render()}
-                <Label>{this.state.value === 0 ? 'Zero' : this.state.value}</Label>
+                <Label>{this.props.value === 0 ? 'Zero' : this.props.value}</Label>
             </div>
         );
-    }
-
-
-    addName(name) {
-        this.setState(this.state.addTag(name))
-    }
-
-    getIconButton(iconName, iconFunction) {
-        return (
-            <Button onClick={iconFunction} icon>
-                <Icon name={iconName}/>
-            </Button>
-        )
     }
 
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Icon, List} from "semantic-ui-react";
 import rowStyle from "../Styles/basicStyle";
 import getIconButton from "../Functions/BasicFunctions";
+import "../Styles/Style1.css"
 
 class NamesContainer extends Component {
     constructor(props, context, maximumSize) {
@@ -15,20 +16,20 @@ class NamesContainer extends Component {
         return (
             <div style={rowStyle}>
                 <List bulleted horizontal>
-                    {this.props.names.map(this.getNameLabel)}
+                    {this.props.names.map((value, index) => this.getNameLabel(value, index))}
                 </List>
                 {this.getPlusButton()}
             </div>
         );
     }
 
-    getNameLabel(name) {
+    getNameLabel(name, index) {
         return (
             <List.Item>
                 <List.Content>
                     <List.Header as='a'>{name}</List.Header>
                 </List.Content>
-                <List.Icon name='arrows alternate' size='large' verticalAlign='middle'/>
+                <List.Icon link onClick={() => this.props.deleteName(index)} name='arrows alternate' size='large' verticalAlign='middle'/>
             </List.Item>
         );
     }

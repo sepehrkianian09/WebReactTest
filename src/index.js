@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Counter from "./Components/Counter";
-import {Button, Label} from "semantic-ui-react";
+import {Button} from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
 
 
@@ -11,10 +11,7 @@ ReactDOM.render(
     /*<React.StrictMode>
       <App />
     </React.StrictMode>*/
-    <div>
-        <Button className="green">kiir</Button>
-        <Counter tags={['fuck', 'shit']} value={5}/>
-    </div>
+    <Counter tags={['fuck', 'shit']} value={5}/>
     ,
     document.getElementById('root')
 );
